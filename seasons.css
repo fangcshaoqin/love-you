@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+:root[data-season="spring"] {
+  --season-accent: #f2b4c5;
+  --season-glow: rgba(245, 126, 177, 0.31);
+  --season-particle: #ffc5d3;
+  --season-label: "SPRING";
+}
+
+:root[data-season="summer"] {
+  --season-accent: #f4d38e;
+  --season-glow: rgba(255, 177, 62, 0.34);
+  --season-particle: #ffe5a1;
+  --season-label: "SUMMER";
+}
+
+:root[data-season="autumn"] {
+  --season-accent: #e5a06f;
+  --season-glow: rgba(216, 103, 52, 0.32);
+  --season-particle: #d99059;
+  --season-label: "AUTUMN";
+}
+
+:root[data-season="winter"] {
+  --season-accent: #b9d8ec;
+  --season-glow: rgba(111, 184, 239, 0.32);
+  --season-particle: #e7f4ff;
+  --season-label: "WINTER";
+}
+
+.season-particle {
+  position: absolute;
+  top: -8%;
+  left: var(--season-left, 10%);
+  width: var(--season-size, 8px);
+  height: var(--season-size, 8px);
+  border-radius: 50%;
+  background: var(--season-particle, #fff);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--season-particle, #fff) 60%, transparent);
+  opacity: 0;
+  animation: season-drift calc(var(--season-duration, 14s) * var(--weather-wind-duration, 1)) linear var(--season-delay, 0s) infinite;
+}
+
+.season-particle::before {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: var(--season-particle, #fff);
+  content: var(--season-glyph, "·");
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: calc(var(--season-size, 8px) * 1.5);
+  line-height: 1;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.season-effects {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.season-effects .season-particle {
+  z-index: 0;
+}
+
+.season-particle:nth-child(1) { --season-left: 8%; --season-duration: 17s; --season-delay: -8s; --season-size: 7px; }
+.season-particle:nth-child(2) { --season-left: 19%; --season-duration: 21s; --season-delay: -2s; --season-size: 9px; }
+.season-particle:nth-child(3) { --season-left: 34%; --season-duration: 19s; --season-delay: -13s; --season-size: 6px; }
+.season-particle:nth-child(4) { --season-left: 48%; --season-duration: 23s; --season-delay: -5s; --season-size: 8px; }
+.season-particle:nth-child(5) { --season-left: 63%; --season-duration: 18s; --season-delay: -10s; --season-size: 7px; }
+.season-particle:nth-child(6) { --season-left: 76%; --season-duration: 22s; --season-delay: -16s; --season-size: 10px; }
+.season-particle:nth-child(7) { --season-left: 88%; --season-duration: 20s; --season-delay: -4s; --season-size: 6px; }
+.season-particle:nth-child(8) { --season-left: 96%; --season-duration: 24s; --season-delay: -19s; --season-size: 8px; }
+
+:root[data-season="spring"] .season-particle {
+  border-radius: 100% 0 100% 0;
+  --season-glyph: "\273F";
+}
+
+:root[data-season="spring"] .season-particle:nth-child(3n) {
+  transform: rotate(38deg);
+}
+
+:root[data-season="summer"] .season-particle {
+  --season-glyph: "\2726";
+  box-shadow: 0 0 18px 3px color-mix(in srgb, var(--season-particle) 56%, transparent);
+}
+
+:root[data-season="autumn"] .season-particle {
+  width: calc(var(--season-size) * 1.3);
+  height: calc(var(--season-size) * 0.75);
+  border-radius: 100% 0 100% 0;
+  --season-glyph: "\1F341";
+}
+
+:root[data-season="winter"] .season-particle {
+  filter: blur(0.4px);
+  box-shadow: 0 0 8px 2px color-mix(in srgb, var(--season-particle) 54%, transparent);
+  --season-glyph: "\2744";
+}
+
+:root[data-season="summer"] .login-scene .rain,
+:root[data-season="winter"] .login-scene .rain {
+  opacity: 0.04;
+}
+
+:root[data-season="spring"] .login-scene .rain {
+  opacity: 0.12;
+}
+
+:root[data-season="summer"] .petal,
+:root[data-season="winter"] .petal {
+  display: none;
+}
+
+:root[data-season="autumn"] .petal {
+  background: linear-gradient(135deg, #ffd194, #b8564c);
+  box-shadow: 0 0 14px rgba(234, 139, 75, 0.42);
+}
+
+:root[data-season="spring"] .petal {
+  background: linear-gradient(135deg, #fff0f2, #ee82aa);
+  box-shadow: 0 0 18px rgba(245, 140, 183, 0.6);
+}
+
+:root[data-season="spring"] .season-kicker,
+:root[data-season="summer"] .season-kicker,
+:root[data-season="autumn"] .season-kicker,
+:root[data-season="winter"] .season-kicker {
+  text-shadow: 0 0 18px color-mix(in srgb, var(--season-accent) 50%, transparent);
+}
+
+:root[data-season="summer"] .time-sun {
+  filter: saturate(1.65) brightness(1.14);
+}
+
+:root[data-season="spring"] .login-card {
+  border-color: color-mix(in srgb, var(--season-accent) 58%, transparent);
+  box-shadow: 0 30px 90px rgba(2, 6, 12, 0.62), 0 0 52px color-mix(in srgb, var(--season-glow) 68%, transparent);
+}
+
+:root[data-season="summer"] .login-card {
+  border-color: color-mix(in srgb, var(--season-accent) 64%, transparent);
+  box-shadow: 0 30px 90px rgba(2, 6, 12, 0.58), 0 0 64px color-mix(in srgb, var(--season-glow) 70%, transparent);
+}
+
+:root[data-season="autumn"] .login-card {
+  border-color: color-mix(in srgb, var(--season-accent) 60%, transparent);
+  box-shadow: 0 30px 90px rgba(2, 6, 12, 0.64), 0 0 54px color-mix(in srgb, var(--season-glow) 68%, transparent);
+}
+
+:root[data-season="winter"] .login-card {
+  border-color: color-mix(in srgb, var(--season-accent) 66%, transparent);
+  box-shadow: 0 30px 90px rgba(2, 6, 12, 0.62), 0 0 60px color-mix(in srgb, var(--season-glow) 72%, transparent);
+}
+
+:root[data-season="winter"] .halo {
+  border-color: rgba(192, 225, 255, 0.25);
+  box-shadow: 0 0 78px rgba(139, 193, 239, 0.13), inset 0 0 62px rgba(139, 193, 239, 0.13);
+}
+
+@keyframes season-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -6vh, 0) rotate(0);
+  }
+  12% { opacity: 0.7; }
+  52% {
+    transform: translate3d(30px, 54vh, 0) rotate(180deg);
+  }
+  88% { opacity: 0.5; }
+  100% {
+    opacity: 0;
+    transform: translate3d(-22px, 112vh, 0) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .season-particle,
+  .petal {
+    animation: none;
+  }
+}

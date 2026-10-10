@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#241b1c">
+    <meta name="description" content="旧琴房的门只为你打开。">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <title>琴房来信 · 只说给你听</title>
+    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="./seasons.css">
+    <link rel="stylesheet" href="./weather.css">
+    <script src="./login-config.js" defer></script>
+    <script src="./seasons.js" defer></script>
+    <script src="./weather.js" defer></script>
+    <script src="./login.js" defer></script>
+  </head>
+  <body>
+    <main class="login-scene">
+      <div class="season-effects" aria-hidden="true">
+        <span class="season-particle"></span><span class="season-particle"></span>
+        <span class="season-particle"></span><span class="season-particle"></span>
+        <span class="season-particle"></span><span class="season-particle"></span>
+        <span class="season-particle"></span><span class="season-particle"></span>
+      </div>
+      <div class="rain" aria-hidden="true"></div>
+      <div class="window-light" aria-hidden="true"></div>
+      <section class="login-card" aria-labelledby="login-title">
+        <div class="login-time">
+          <span class="login-greeting" id="login-greeting">此刻的温柔，正在为你送达</span>
+          <time class="login-clock" id="login-clock"></time>
+        </div>
+        <section class="weather-widget weather-widget--login" id="weather-widget" aria-label="实时天气" aria-live="polite" aria-busy="true">
+          <span class="weather-icon" id="weather-icon" aria-hidden="true">◌</span>
+          <span class="weather-copy">
+            <strong id="weather-summary">正在查询天气</strong>
+            <span id="weather-details">按 IP 粗略估算位置</span>
+          </span>
+          <button class="weather-refresh" id="weather-refresh" type="button" aria-label="刷新天气" title="刷新天气">↻</button>
+          <span class="weather-credit">IP 定位 <a href="https://ipwho.is/" target="_blank" rel="noreferrer">ipwho.is</a> · 天气 <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a></span>
+        </section>
+        <p class="login-kicker">ROOM 07 · PRIVATE LISTENING</p>
+        <p class="login-season" id="login-season">此刻正值春天，愿你也有新的期待。</p>
+        <h1 id="login-title">琴房的灯<br>还为你亮着</h1>
+        <p class="login-description">雨声替我保管了一些话。输入只有你知道的暗号，来听完这段没弹完的旋律。</p>
+        <form class="login-form" id="login-form" novalidate>
+          <div class="login-field">
+            <label for="login-username">账号</label>
+            <input id="login-username" name="username" type="text" placeholder="你的名字" maxlength="72" autocomplete="username" required>
+          </div>
+          <div class="login-field">
+            <label for="login-password">密码</label>
+            <input id="login-password" name="password" type="password" placeholder="那句只属于我们的暗号" maxlength="72" autocomplete="current-password" required>
+          </div>
+          <div class="login-actions">
+            <span class="login-local-note">登录次数保存在当前浏览器</span>
+            <button class="login-button" type="submit">推开琴房的门 <span aria-hidden="true">↗</span></button>
+          </div>
+          <p class="login-status" id="login-status" role="status" aria-live="polite"></p>
+        </form>
+        <div class="piano-keys" aria-hidden="true"></div>
+        <p class="login-footnote">LISTEN CLOSELY · THE LAST NOTE IS YOURS</p>
+        <p class="login-attribution">天气按 IP 粗略估算位置 · <a href="https://ipwho.is/" target="_blank" rel="noreferrer">定位服务</a> / <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">天气数据</a></p>
+      </section>
+    </main>
+  </body>
+</html>
